@@ -1,11 +1,11 @@
 package classes;
 
-public abstract class Oscar {
+public  class Oscar {
 
-	protected int indice;
-	protected int ano;
-	protected int idadeVencedor;
-	protected String nomeVencedor, filme;
+	private int indice;
+	private int ano;
+	private int idadeVencedor;
+	private String nomeVencedor, filme;
 	
 	
 	public Oscar(int indice, int ano, int idade, String nomeVencedor, String filme) {
@@ -34,7 +34,7 @@ public abstract class Oscar {
 	public void setIdade(int idade) {
 		this.idadeVencedor = idade;
 	}
-	public String getNome() {
+	public String getNomeVencedor() {
 		return nomeVencedor;
 	}
 	public void setNome(String nome) {
@@ -46,5 +46,11 @@ public abstract class Oscar {
 	public void setFilme(String filme) {
 		this.filme = filme;
 	}
+	@Override
+	public String toString() {
+		return "Oscar [Indice: " + indice + ", Ano: " + ano + ", Nome Vencedor: "
+				+ nomeVencedor + ", Idade Vencedor: " + idadeVencedor +  ", Filme: " + filme + "]";
+	}
+	
 	
 }
