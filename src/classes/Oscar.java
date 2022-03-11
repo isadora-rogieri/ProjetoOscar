@@ -2,13 +2,13 @@ package classes;
 
 public  class Oscar {
 
-	private int indice;
-	private int ano;
-	private int idadeVencedor;
+	private Integer indice;
+	private Integer ano;
+	private Integer idadeVencedor;
 	private String nomeVencedor, filme;
 	
 	
-	public Oscar(int indice, int ano, int idade, String nomeVencedor, String filme) {
+	public Oscar(Integer indice, Integer ano, Integer idade, String nomeVencedor, String filme) {
 		super();
 		this.indice = indice;
 		this.ano = ano;
@@ -48,8 +48,8 @@ public  class Oscar {
 	}
 	@Override
 	public String toString() {
-		return "Oscar [Indice: " + indice + ", Ano: " + ano + ", Nome Vencedor: "
-				+ nomeVencedor + ", Idade Vencedor: " + idadeVencedor +  ", Filme: " + filme + "]";
+		return "Oscar [Ano: " + ano + ", Nome Vencedor: "
+				+ nomeVencedor + ", Idade Vencedor: " + idadeVencedor +  ", Filme:" + filme + "]";
 	}
 	
 	

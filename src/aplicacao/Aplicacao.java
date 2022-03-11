@@ -1,17 +1,12 @@
-package testes;
+package aplicacao;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Scanner;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import classes.LerManipularArquivo;
 import classes.Oscar;
 
@@ -22,7 +17,7 @@ public class Aplicacao {
 
 	public static void main(String[] args) {
 		Aplicacao app = new Aplicacao();
-		
+
 		oscarM = LerManipularArquivo.criandoNovoOscar("oscar_male.csv");
 		oscarF = LerManipularArquivo.criandoNovoOscar("oscar_female.csv");
 		app.encontreAtorMaisJovem();
@@ -48,7 +43,7 @@ public class Aplicacao {
 		.max(Comparator.comparingLong(Entry::getValue))
 		.ifPresent(c -> System.out.println(c.getKey() + " - Foi premiada " + c.getValue() + " vezes."));
 	}
-	
+	//Atriz mais premiada entre 20 e 30 anos
 	private void encontreAtrizMaisPremiadacomFiltro() {
 		System.out.println("#3 - Atriz entre 20 a 30 anos mais premiada: ");
 		Map<String, Long>  nomes = this.oscarF.stream()				
@@ -76,12 +71,19 @@ public class Aplicacao {
 		List<Oscar> listas = Stream.concat(this.oscarM.stream(),this.oscarF.stream()).collect(Collectors.toList());
 		Scanner sc = new Scanner(System.in);
 		String nome = sc.nextLine();
-		listas.stream()
-		.filter((c) -> c.getNomeVencedor().toLowerCase().contains(nome.toLowerCase())).collect(Collectors.toList())
-		.forEach(System.out::println);
+		List<Oscar> busca = listas.stream()
+		.filter((c) -> c.getNomeVencedor().toLowerCase().contains(nome.toLowerCase()))
+		.collect(Collectors.toList());
+		//Validando o nome da Busca
+		if(busca.isEmpty()) {
+			System.out.println("Essa pessoa não está lista!");			
+		}else {
+			busca.forEach(System.out::println);
+		}
+		
 	}
 
-	
+
 }
 
 
