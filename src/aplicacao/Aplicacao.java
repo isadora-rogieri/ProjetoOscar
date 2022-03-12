@@ -72,15 +72,24 @@ public class Aplicacao {
 		Scanner sc = new Scanner(System.in);
 		String nome = sc.nextLine();
 		List<Oscar> busca = listas.stream()
-		.filter((c) -> c.getNomeVencedor().toLowerCase().contains(nome.toLowerCase()))
-		.collect(Collectors.toList());
+				.filter((c) -> c.getNomeVencedor().toLowerCase().contains(nome.toLowerCase()))
+				.collect(Collectors.toList());
+
 		//Validando o nome da Busca
 		if(busca.isEmpty()) {
 			System.out.println("Essa pessoa não está lista!");			
 		}else {
-			busca.forEach(System.out::println);
+			busca.stream()
+			.collect(Collectors.groupingBy(Oscar::getNomeVencedor))
+			.forEach((premiado, oscar) -> {
+				System.out.printf("\nNome: %s (Ganhou: %d)\n", premiado, oscar.size());
+				oscar.forEach((c) -> System.out.println(" Ano: " + c.getAno() 
+				+ " Idade: "+  c.getIdade()+ 
+				" Filme:" + c.getFilme()));
+			});		
+
 		}
-		
+
 	}
 
 
