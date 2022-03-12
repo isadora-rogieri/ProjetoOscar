@@ -75,7 +75,7 @@ public class Aplicacao {
 				.filter((c) -> c.getNomeVencedor().toLowerCase().contains(nome.toLowerCase()))
 				.collect(Collectors.toList());
 
-		//Validando o nome da Busca
+		//Validando se o nome está na Lista
 		if(busca.isEmpty()) {
 			System.out.println("Essa pessoa não está lista!");			
 		}else {
